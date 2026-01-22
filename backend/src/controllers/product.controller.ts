@@ -34,9 +34,9 @@ export const getProducts = async (req: Request, res: Response) => {
       orderBy: { createdAt: 'desc' }
     });
     res.json(products);
-  } catch (error) {
+  } catch (error: any) {
     console.error("GetProducts Error:", error);
-    res.status(500).json({ error: 'Failed to fetch products' });
+    res.status(500).json({ error: 'Failed to fetch products', details: error.message });
   }
 };
 
